@@ -1,0 +1,33 @@
+#!/bin/bash
+
+if [ $# -lt 1 ]
+then
+    sleep 2
+    echo
+    echo "Usage : $0 [KEY_WORD]"
+    echo
+    echo "If you want to search for two things or two words, place the + instead of the space"
+    echo "Example:"
+    echo "      $0 port+scan"
+    echo
+elif [ $# -gt 1 ]
+then
+    sleep 2
+    echo
+    echo "Usage : $0 [KEY_WORD]"
+    echo
+    echo "If you want to search for two things or two words, place the + instead of the space"
+    echo "Example:"
+    echo "      $0 port+scan"
+    echo
+else
+    echo "SearchTool v1.0"
+    echo "Dev. : obaida ismail"
+    echo "Telegram : t.me/CyberSecurityIQ"
+    echo
+    echo "Results :"
+for page in {1..7}
+do
+    curl "https://github.com/search?p=$page&q=$1&type=Repositories" -s | grep "/<em>" | cut -f 3,4,5 -d '/' | cut -f 1 -d '&' | grep github
+done
+fi
